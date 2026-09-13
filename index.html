@@ -1,0 +1,550 @@
+ <!-- DESIGNED & DEVELOPED BY LINDY RAMAT · AI-ASSISTED WEB DEVELOPER -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Afridi — Portfolio</title>
+<meta name="description" content="Portfolio of Muhammad Afridi, a Computer Science student at UET Peshawar. Explore his skills in C, C++, Java, Python and web development, education, and certifications.">
+<meta name="keywords" content="Muhammad Afridi, Computer Science student, UET Peshawar, web developer portfolio, Python developer, C++ developer">
+<meta name="author" content="Muhammad Afridi">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#030909">
+<link rel="canonical" href="https://muhammadafridi.vercel.app">
+
+<!-- Favicon -->
+
+<link rel="icon" href="images/PROFESSIONAL PHOTO.png" sizes="any">
+<link rel="icon" type="image/svg+xml" href="images/PROFESSIONAL PHOTO.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/PROFESSIONAL PHOTO.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/PROFESSIONAL PHOTO.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/PROFESSIONAL PHOTO.png">
+<link rel="manifest" href="images/PROFESSIONAL PHOTO.png">
+
+<!-- Open Graph -->
+
+<meta property="og:title" content="Muhammad Afridi — Computer Science Student & Developer">
+<meta property="og:description" content="Portfolio of Muhammad Afridi, a Computer Science student at UET Peshawar.">
+<meta property="og:image" content="images/OpenGraph.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Muhammad Afridi — Computer Science Student & Developer">
+<meta property="og:url" content="https://muhammadafridi1.github.io/portfolio/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Muhammad Afridi Portfolio">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Muhammad Afridi — Computer Science Student & Developer">
+<meta name="twitter:description" content="Portfolio of Muhammad Afridi, a Computer Science student at UET Peshawar.">
+<meta name="twitter:image" content="images/OpenGraph.png">
+<meta name="twitter:image:alt" content="Muhammad Afridi — Computer Science Student & Developer">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Muhammad Afridi",
+  "jobTitle": "Computer Science Student",
+  "url": "https://muhammadafridi1.github.io/portfolio/",
+  "image": "https://muhammadafridi1.github.io/portfolio/assets/images/og-image.jpg",
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "University of Engineering and Technology, Peshawar" },
+    { "@type": "HighSchool", "name": "Govt Higher Secondary School, Samabadaber" }
+  ],
+  "email": "mailto:saada5ridi@gmail.com",
+  "sameAs": [
+    "https://github.com/MuhammadAfridi1",
+    "https://www.instagram.com/mafridi_01/"
+  ]
+}
+</script>
+</head>
+<body>
+
+
+<script>
+  function makePlaceholder(label, bg, fg) {
+    bg = bg || '#0A1F1D';
+    fg = fg || '#F4F7F6';
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">' +
+      '<rect width="300" height="300" fill="' + bg + '"/>' +
+      '<text x="50%" y="50%" fill="' + fg + '" font-family="\'Space Grotesk\', sans-serif" ' +
+      'font-size="42" font-weight="600" text-anchor="middle" dominant-baseline="middle">' + label + '</text></svg>';
+    return 'data:image/svg+xml;base64,' + btoa(svg);
+  }
+</script>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<div class="intro-splash" id="introSplash" aria-hidden="true">
+  <div class="intro-splash-inner">
+    <p class="intro-splash-word" id="introWord">Muhammad Afridi</p>
+    <p class="intro-splash-label">Student Developer</p>
+    <div class="intro-splash-bar"><span class="intro-splash-bar-fill" id="introBarFill"></span></div>
+  </div>
+</div>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav" aria-label="Primary">
+    <a href="#home" class="nav-brand">AFRIDI</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" data-nav="about">About</a></li>
+      <li><a href="#skills" data-nav="skills">Skills</a></li>
+      <li><a href="#services" data-nav="services">Services</a></li>
+      <li><a href="#education" data-nav="education">Education</a></li>
+      <li><a href="#certifications" data-nav="certifications">Certifications</a></li>
+      <li><a href="#contact" data-nav="contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#contact" class="nav-cta">Let's Talk <span aria-hidden="true">→</span></a>
+    </div>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!--MOBILE-->
+<div class="mobile-menu-backdrop" id="mobileMenuBackdrop" hidden></div>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-header">
+    <a href="#home" class="mobile-menu-brand">AFRIDI</a>
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+  </div>
+  <nav class="mobile-menu-links" aria-label="Mobile">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#services">Services</a>
+    <a href="#education">Education</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="mobile-menu-footer">
+    <a href="mailto:saada5ridi@gmail.com" class="mobile-menu-cta">Let's Talk <span aria-hidden="true">→</span></a>
+    
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-glow"></div>
+      <svg class="hero-grid" viewBox="0 0 1200 800" preserveAspectRatio="none">
+        <defs>
+          <pattern id="gridPattern" width="60" height="60" patternUnits="userSpaceOnUse">
+            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="1200" height="800" fill="url(#gridPattern)"/>
+      </svg>
+      <svg class="hero-curve" viewBox="0 0 1200 800" preserveAspectRatio="none">
+        <path d="M -50 600 C 250 500, 450 700, 700 550 S 1150 350, 1300 420" fill="none" stroke="currentColor" stroke-width="1"/>
+        <path d="M -50 700 C 300 620, 500 780, 800 650 S 1150 480, 1300 540" fill="none" stroke="currentColor" stroke-width="1"/>
+      </svg>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1 class="hero-headline reveal">
+          Making the<br>
+          <em> WEB </em>a little more<br>
+          awesome.
+        </h1>
+        <p class="hero-text reveal">I'm Muhammad Afridi, a Computer Science student at UET Peshawar. I work across programming languages, web development and data tools — turning coursework and self-taught skill into practical, working software.</p>
+        <div class="hero-actions reveal">
+          <a href="#contact" class="btn-primary">Let's Work Together <span aria-hidden="true">→</span></a>
+          <a href="https://github.com/MuhammadAfridi1" target="_blank" rel="noopener" class="btn-ghost">View GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="hero-portrait">
+          <img
+            src="PROFESSIONAL PHOTO.webp"
+            alt="Muhammad Afridi — professional photo"
+            class="hero-portrait-img"
+            onerror="this.onerror=null; this.src=makePlaceholder('MA');"
+          >
+        </div>
+        <dl class="hero-meta">
+        </dl>
+      </div>
+    </div>
+
+    <div class="hero-marquee" aria-hidden="true">
+      <div class="hero-marquee-track">
+        <span>Computer Science</span><span>Web Development</span><span>Python</span><span>C++</span><span>JavaScript</span><span>Artificial Intelligence</span>
+        <span>Computer Science</span><span>Web Development</span><span>Python</span><span>C++</span><span>JavaScript</span><span>Artificial Intelligence</span>
+        <span>Computer Science</span><span>Web Development</span><span>Python</span><span>C++</span><span>JavaScript</span><span>Artificial Intelligence</span>
+      </div>
+    </div>
+  </section>
+
+  <!--About Section -->
+  <section id="about" class="section">
+    <div class="section-head reveal">
+     
+      <h2 class="section-heading">About<br>Muhammad</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-body reveal">
+        <p>I was born in 2005 in Peshawar, Pakistan, and am proud to belong to the Afridi clan from Khyber Pakhtunkhwa. My passion for computer science has been a driving force throughout my life.</p>
+        <p>I completed my high schooling at Government Higher Secondary School, Samabadaber, with an impressive 90% marks. Following that, I enrolled in a bachelor's degree in Computer Science at the University of Engineering and Technology (UET) Peshawar.</p>
+        <p>In addition to my formal education, I have undertaken various online courses, the details of which can be found in the Certifications section. My language skills include complete command of English, Urdu, and Pashto, and I am at an upper-intermediate level in German. I am also proficient in Microsoft tools such as Word and Excel.</p>
+        <p>My experiences extend beyond academics. I have volunteered as a tutor, helping students with their studies. Additionally, I participated in football tournaments, though I chose to step away from the sport due to personal preferences.</p>
+      </div>
+
+      <dl class="about-info reveal">
+        <div class="about-info-row">
+          <dt>Location</dt>
+          <dd>Peshawar, Pakistan</dd>
+        </div>
+        <div class="about-info-row">
+          <dt>Education</dt>
+          <dd>BS Computer Science, UET</dd>
+        </div>
+        <div class="about-info-row">
+          <dt>Languages</dt>
+          <dd>English, Urdu, Pashto, German</dd>
+        </div>
+        <div class="about-info-row">
+          <dt>Focus</dt>
+          <dd>Software Development</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!--Skills Section -->
+  <section id="skills" class="section">
+    <div class="section-head reveal">
+      <p class="section-label">Capabilities</p>
+      <h2 class="section-heading">Technical Skills</h2>
+    </div>
+
+    <div class="skill-rows">
+      <div class="skill-row reveal">
+        <span class="skill-row-index">01</span>
+        <div class="skill-row-main">
+          <h3>Programming Languages</h3>
+          <ul class="skill-tags">
+            <li>C</li>
+            <li>C++</li>
+            <li>Java</li>
+            <li>Python</li>
+          </ul>
+        </div>
+        <span class="skill-row-arrow" aria-hidden="true">→</span>
+      </div>
+      <div class="skill-row reveal">
+        <span class="skill-row-index">02</span>
+        <div class="skill-row-main">
+          <h3>Web Development</h3>
+          <ul class="skill-tags">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+          </ul>
+        </div>
+        <span class="skill-row-arrow" aria-hidden="true">→</span>
+      </div>
+      <div class="skill-row reveal">
+        <span class="skill-row-index">03</span>
+        <div class="skill-row-main">
+          <h3>Productivity</h3>
+          <ul class="skill-tags">
+            <li>Microsoft Word</li>
+            <li>Microsoft Excel</li>
+          </ul>
+        </div>
+        <span class="skill-row-arrow" aria-hidden="true">→</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section">
+    <div class="section-head reveal">
+      <h2 class="section-heading">What I Can Do.</h2>
+    </div>
+
+    <div class="service-rows">
+      <a href="mailto:saada5ridi@gmail.com?subject=Inquiry%20about%20Data%20Analysis" class="service-row reveal">
+        <span class="service-row-index">01</span>
+        <div class="service-row-main">
+          <h3>Data Analysis</h3>
+          <p>Explore datasets, identify patterns, and turn findings into actionable insights.</p>
+        </div>
+        <span class="service-row-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="mailto:saada5ridi@gmail.com?subject=Inquiry%20about%20Python%20Data%20Analysis" class="service-row reveal">
+        <span class="service-row-index">02</span>
+        <div class="service-row-main">
+          <h3>Python Data Analysis</h3>
+          <p>Use Python workflows to organize, analyze, and interpret structured datasets.</p>
+        </div>
+        <span class="service-row-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="mailto:saada5ridi@gmail.com?subject=Inquiry%20about%20Excel%20Data%20Analysis" class="service-row reveal">
+        <span class="service-row-index">03</span>
+        <div class="service-row-main">
+          <h3>Excel Data Analysis</h3>
+          <p>Clean, structure, summarize, and analyze spreadsheet data for better decisions.</p>
+        </div>
+        <span class="service-row-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="mailto:saada5ridi@gmail.com?subject=Inquiry%20about%20Power%20BI%20Dashboards" class="service-row reveal">
+        <span class="service-row-index">04</span>
+        <div class="service-row-main">
+          <h3>Power BI Dashboards</h3>
+          <p>Build focused dashboards that make key metrics easier to understand and monitor.</p>
+        </div>
+        <span class="service-row-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="mailto:saada5ridi@gmail.com?subject=Inquiry%20about%20Data%20Visualization" class="service-row reveal">
+        <span class="service-row-index">05</span>
+        <div class="service-row-main">
+          <h3>Data Visualization</h3>
+          <p>Present complex information through clean, readable, and purposeful visuals.</p>
+        </div>
+        <span class="service-row-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="mailto:saada5ridi@gmail.com?subject=Inquiry%20about%20Data%20Cleaning" class="service-row reveal">
+        <span class="service-row-index">06</span>
+        <div class="service-row-main">
+          <h3>Data Cleaning</h3>
+          <p>Prepare messy datasets by removing inconsistencies, duplicates, and unusable entries.</p>
+        </div>
+        <span class="service-row-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="section">
+    <div class="section-head reveal">
+      <p class="section-label">Education</p>
+      <h2 class="section-heading">Academic Journey</h2>
+    </div>
+
+    <ol class="timeline">
+      <li class="timeline-item reveal">
+        <img src="images/UET.webp" alt="UET Peshawar logo" class="timeline-logo" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('UET');">
+        <div class="timeline-content">
+          <p class="timeline-date">2024 — Present</p>
+          <h3>Bachelor's Degree in Computer Science</h3>
+          <p class="timeline-place">University of Engineering and Technology (UET), Peshawar</p>
+          <p class="timeline-desc">Currently pursuing formal undergraduate studies in Computer Science.</p>
+        </div>
+      </li>
+      <li class="timeline-item reveal">
+        <img src="images/HighEduc.webp" alt="Govt Higher Secondary School logo" class="timeline-logo" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('GHSS');">
+        <div class="timeline-content">
+          <p class="timeline-date">Graduated 2023</p>
+          <h3>Higher Secondary Education</h3>
+          <p class="timeline-place">Govt Higher Secondary School, Sama Badaber</p>
+          <p class="timeline-desc">Completed higher secondary education with 90% marks.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="prof-dev">
+      <p class="prof-dev-label">Professional Development</p>
+      <div class="prof-dev-grid">
+        <div class="prof-dev-card reveal">
+          <img src="images/Coursera.webp" alt="Coursera logo" class="prof-dev-logo" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('CR');">
+          <div>
+            <h4>Coursera</h4>
+            <p>Courses in programming, data science, and human physiology</p>
+          </div>
+        </div>
+        <div class="prof-dev-card reveal">
+          <img src="images/edx.webp" alt="edX logo" class="prof-dev-logo" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('edX');">
+          <div>
+            <h4>edX</h4>
+            <p>Courses from institutions including Harvard and MIT</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certification Section -->
+  <section id="certifications" class="section">
+    <div class="section-head reveal">
+      <h2 class="section-heading">13 Certifications.<br>Continuous Learning.</h2>
+    </div>
+
+    <div class="cert-grid" id="certGrid">
+      <figure class="cert-card reveal">
+        <button class="cert-thumb-btn" type="button" data-cert-title="EF Set English Certificate" data-cert-issuer="Certified English proficiency level" data-cert-img="images/EFSET.webp">
+          <img src="images/EFSET.webp" alt="EF SET English Certificate" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('EF SET');">
+        </button>
+        <figcaption><span class="cert-badge">Languages</span><strong>EF Set English Certificate</strong><span class="cert-issuer">Certified English proficiency level</span></figcaption>
+      </figure>
+      <figure class="cert-card reveal">
+        <button class="cert-thumb-btn" type="button" data-cert-title="Introductory Human Physiology" data-cert-issuer="Duke University via Coursera" data-cert-img="images/Duke.webp">
+          <img src="images/Duke.webp" alt="Introductory Human Physiology certificate" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('Duke');">
+        </button>
+        <figcaption><span class="cert-badge">General Learning</span><strong>Introductory Human Physiology</strong><span class="cert-issuer">Duke University via Coursera</span></figcaption>
+      </figure>
+      <figure class="cert-card reveal">
+        <button class="cert-thumb-btn" type="button" data-cert-title="IELTS Mastery Certificate" data-cert-issuer="English language proficiency" data-cert-img="images/IELTS.webp">
+          <img src="images/IELTS.webp" alt="IELTS Mastery Certificate" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('IELTS');">
+        </button>
+        <figcaption><span class="cert-badge">Languages</span><strong>IELTS Mastery Certificate</strong><span class="cert-issuer">English language proficiency</span></figcaption>
+      </figure>
+      <figure class="cert-card reveal">
+        <button class="cert-thumb-btn" type="button" data-cert-title="Korean First Step" data-cert-issuer="Basic Korean language certification" data-cert-img="images/Korean.webp">
+          <img src="images/Korean.webp" alt="Korean First Step certificate" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('KR');">
+        </button>
+        <figcaption><span class="cert-badge">Languages</span><strong>Korean First Step</strong><span class="cert-issuer">Basic Korean language certification</span></figcaption>
+      </figure>
+      <figure class="cert-card reveal">
+        <button class="cert-thumb-btn" type="button" data-cert-title="Understanding Body Signals" data-cert-issuer="University of Pennsylvania" data-cert-img="images/Body Signals.webp">
+          <img src="images/Body Signals.webp" alt="Understanding Body Signals certificate" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('UPenn');">
+        </button>
+        <figcaption><span class="cert-badge">General Learning</span><strong>Understanding Body Signals</strong><span class="cert-issuer">University of Pennsylvania</span></figcaption>
+      </figure>
+      <figure class="cert-card reveal">
+        <button class="cert-thumb-btn" type="button" data-cert-title="Rabies & One Health" data-cert-issuer="World Health Organization" data-cert-img="images/RabiesOneHealth.webp">
+          <img src="images/RabiesOneHealth.webp" alt="Rabies & One Health certificate" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('WHO');">
+        </button>
+        <figcaption><span class="cert-badge">General Learning</span><strong>Rabies &amp; One Health</strong><span class="cert-issuer">World Health Organization</span></figcaption>
+      </figure>
+      <figure class="cert-card reveal">
+        <button class="cert-thumb-btn" type="button" data-cert-title="Programming for Everybody" data-cert-issuer="University of Michigan" data-cert-img="images/ProgrammingforEverybody.webp">
+          <img src="images/ProgrammingforEverybody.webp" alt="Programming for Everybody certificate" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('UMich');">
+        </button>
+        <figcaption><span class="cert-badge">Programming</span><strong>Programming for Everybody</strong><span class="cert-issuer">University of Michigan</span></figcaption>
+      </figure>
+     <figure class="cert-card reveal">
+        <button class="cert-thumb-btn" type="button" data-cert-title="Future Android Programming certificate" data-cert-issuer="UC Sandiego" data-cert-img="images/Android-Programming.webp">
+          <img src="images/Android-Programming.webp" alt="Future Android Programming certificate" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('UC San Diego');">
+        </button>
+        <figcaption><span class="cert-badge">Programming</span><strong>"Future Android Programming certificate</strong><span class="cert-issuer">UC San Diego</span></figcaption>
+      </figure>
+      <figure class="cert-card reveal">
+        <button class="cert-thumb-btn" type="button" data-cert-title="Build & Deploy AI Messenger Chatbot" data-cert-issuer="Coursera Graded Project" data-cert-img="images/BuildAndDeploy.webp">
+          <img src="images/BuildAndDeploy.webp" alt="Build & Deploy AI Messenger Chatbot certificate" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('AI Bot');">
+        </button>
+        <figcaption><span class="cert-badge">Artificial Intelligence</span><strong>Build &amp; Deploy AI Messenger Chatbot</strong><span class="cert-issuer">Coursera Graded Project</span></figcaption>
+      </figure>
+      <figure class="cert-card reveal">
+        <button class="cert-thumb-btn" type="button" data-cert-title="Programming Foundations Fundamentals" data-cert-issuer="LinkedIn Learning" data-cert-img="images/Programmingfoundations.webp">
+          <img src="images/Programmingfoundations.webp" alt="Programming Foundations Fundamentals certificate" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('LI');">
+        </button>
+        <figcaption><span class="cert-badge">Programming</span><strong>Programming Foundations Fundamentals</strong><span class="cert-issuer">LinkedIn Learning</span></figcaption>
+      </figure>
+      <figure class="cert-card reveal">
+        <button class="cert-thumb-btn" type="button" data-cert-title="Building AI Powered Chatbots" data-cert-issuer="IBM Certification" data-cert-img="images/AIPowered.webp">
+          <img src="images/AIPowered.webp" alt="Building AI Powered Chatbots certificate" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('IBM');">
+        </button>
+        <figcaption><span class="cert-badge">Artificial Intelligence</span><strong>Building AI Powered Chatbots</strong><span class="cert-issuer">IBM Certification</span></figcaption>
+      </figure>
+      <figure class="cert-card reveal">
+        <button class="cert-thumb-btn" type="button" data-cert-title="Introduction to Artificial Intelligence (AI)" data-cert-issuer="IBM Certification" data-cert-img="images/IntroAI.webp">
+          <img src="images/IntroAI.webp" alt="Introduction to Artificial Intelligence certificate" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('IBM AI');">
+        </button>
+        <figcaption><span class="cert-badge">Artificial Intelligence</span><strong>Introduction to Artificial Intelligence (AI)</strong><span class="cert-issuer">IBM Certification</span></figcaption>
+      </figure>
+      <figure class="cert-card reveal">
+        <button class="cert-thumb-btn" type="button" data-cert-title="Create Your First Python Program" data-cert-issuer="U.ST" data-cert-img="images/FirstPython.webp">
+          <img src="images/FirstPython.webp" alt="Create Your First Python Program certificate" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('U.ST');">
+        </button>
+        <figcaption><span class="cert-badge">Programming</span><strong>Create Your First Python Program</strong><span class="cert-issuer">Microsoft</span></figcaption>
+      </figure>
+      <figure class="cert-card reveal">
+        <button class="cert-thumb-btn" type="button" data-cert-title="Github Foundations" data-cert-issuer="Microsoft" data-cert-img="images/Github.webp">
+          <img src="images/Github.webp" alt="Github Foundations certificate" loading="lazy" onerror="this.onerror=null; this.src=makePlaceholder('Microsoft');">
+        </button>
+        <figcaption><span class="cert-badge">Programming</span><strong>Github Foundations</strong><span class="cert-issuer">Microsoft</span></figcaption>
+      </figure>
+    </div>
+    <div class="cert-show-more-wrap">
+      <button class="btn-outline cert-show-more" id="certShowMore" type="button" aria-expanded="false" aria-controls="certGrid">
+        Show More Certificates
+      </button>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="contact-glow" aria-hidden="true"></div>
+    <p class="section-label">Contact</p>
+    <h2 class="contact-heading">Let's build<br>something useful.</h2>
+    <p class="contact-text">Open to opportunities, collaborations, and conversations related to technology and computer science.</p>
+    <div class="contact-actions">
+      <a href="mailto:saada5ridi@gmail.com" class="btn-primary">Email Muhammad <span aria-hidden="true">→</span></a>
+      <button type="button" class="btn-ghost" id="copyEmailBtn" data-email="saada5ridi@gmail.com">Copy Email Address</button>
+    </div>
+    <span class="copy-feedback" id="copyFeedback" role="status" aria-live="polite"></span>
+    <div class="contact-social">
+      <a href="https://github.com/MuhammadAfridi1" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://www.instagram.com/mafridi_01/" target="_blank" rel="noopener">Instagram ↗</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h2>AFRIDI</h2>
+        <p>Computer Science Student &amp; Developer</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="https://github.com/MuhammadAfridi1" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.instagram.com/mafridi_01/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="mailto:saada5ridi@gmail.com">Email</a></li>
+      </ul>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© <span id="year"></span> Muhammad Afridi. All rights reserved.</p>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="true">
+        <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <line x1="12" y1="2" x2="12" y2="4.5"></line>
+          <line x1="12" y1="19.5" x2="12" y2="22"></line>
+          <line x1="4.22" y1="4.22" x2="5.94" y2="5.94"></line>
+          <line x1="18.06" y1="18.06" x2="19.78" y2="19.78"></line>
+          <line x1="2" y1="12" x2="4.5" y2="12"></line>
+          <line x1="19.5" y1="12" x2="22" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.94" y2="18.06"></line>
+          <line x1="18.06" y1="5.94" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</footer>
+
+<!-- Certificate Modal -->
+<div class="cert-modal" id="certModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle">
+  <div class="cert-modal-content">
+    <button class="cert-modal-close" id="certModalClose" aria-label="Close certificate preview">✕</button>
+    <img id="certModalImg" src="" alt="">
+    <div class="cert-modal-caption">
+      <strong id="certModalTitle"></strong>
+      <span id="certModalIssuer"></span>
+    </div>
+  </div>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
