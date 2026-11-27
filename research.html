@@ -1,0 +1,782 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Workspace</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 35px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            letter-spacing: -1.5px;
+        }
+
+        header p {
+            color: #64748b;
+            margin-top: 12px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1250px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* Search Bar */
+
+        .search-container {
+            max-width: 650px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .search-container svg {
+            position: absolute;
+            left: 17px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 17px 20px 17px 48px;
+            border: 1px solid #dbe2ea;
+            border-radius: 12px;
+            background: white;
+            font-size: 16px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        #searchInput:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px #2563eb15;
+        }
+
+        .document-count {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* Document Grid */
+
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fill, minmax(245px, 1fr)
+            );
+            gap: 24px;
+        }
+
+        .pdf-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .pdf-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px #0f172a12;
+        }
+
+        /* PDF Preview */
+
+        .preview {
+            width: 100%;
+            height: 290px;
+            background: #e9edf3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+        }
+
+        .preview canvas {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            box-shadow: 0 4px 15px #00000020;
+        }
+
+        .file-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #dc2626;
+            color: white;
+            padding: 5px 9px;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 5px;
+            z-index: 1;
+        }
+
+        .preview-overlay {
+            position: absolute;
+            inset: 0;
+            background: #0f172a70;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .preview:hover .preview-overlay,
+        .preview:focus-visible .preview-overlay {
+            opacity: 1;
+        }
+
+        .preview-overlay span {
+            background: white;
+            color: #0f172a;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        /* Document Information */
+
+        .pdf-info {
+            padding: 18px;
+        }
+
+        .pdf-title {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+            margin-bottom: 8px;
+        }
+
+        .pdf-details {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            border: none;
+            border-radius: 8px;
+            padding: 11px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .view-btn {
+            background: #2563eb;
+            color: white;
+            flex: 1;
+        }
+
+        .view-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .download-btn {
+            background: #f1f5f9;
+            color: #334155;
+        }
+
+        .download-btn:hover {
+            background: #e2e8f0;
+        }
+
+        /* Loading Animation */
+
+        .loader {
+            width: 32px;
+            height: 32px;
+            border: 3px solid #cbd5e1;
+            border-top-color: #2563eb;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .preview-error {
+            color: #64748b;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* Full Screen PDF Viewer */
+
+        .viewer {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: #0f172a;
+            display: none;
+            flex-direction: column;
+        }
+
+        .viewer.active {
+            display: flex;
+        }
+
+        .viewer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 15px 20px;
+            color: white;
+            flex-wrap: wrap;
+        }
+
+        .viewer-header h3 {
+            flex: 1;
+            font-size: 16px;
+            overflow-wrap: anywhere;
+        }
+
+        .viewer-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .viewer-btn {
+            background: #334155;
+            color: white;
+        }
+
+        .viewer-btn:hover {
+            background: #475569;
+        }
+
+        .close-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .close-btn:hover {
+            background: #b91c1c;
+        }
+
+        .viewer iframe {
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            border: none;
+            background: white;
+        }
+
+        /* Empty Search Results */
+
+        .empty {
+            display: none;
+            text-align: center;
+            padding: 80px 20px;
+            color: #64748b;
+        }
+
+        .empty h2 {
+            margin-bottom: 10px;
+            color: #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        /* Responsive Design */
+
+        @media (max-width: 600px) {
+            header {
+                padding: 35px 15px 20px;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .pdf-grid {
+                grid-template-columns: repeat(
+                    auto-fill, minmax(150px, 1fr)
+                );
+                gap: 12px;
+            }
+
+            .preview {
+                height: 210px;
+                padding: 12px;
+            }
+
+            .pdf-info {
+                padding: 12px;
+            }
+
+            .pdf-title {
+                font-size: 14px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .viewer-header h3 {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>My Workspace</h1>
+        <p>Explore, read and download available documents.</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Search Bar -->
+
+        <div class="search-container">
+
+            <svg width="20" height="20" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="M21 21l-4.35-4.35"></path>
+            </svg>
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search documents..."
+                aria-label="Search documents"
+                autocomplete="off"
+            >
+
+        </div>
+
+        <p class="document-count" id="documentCount"
+           aria-live="polite"></p>
+
+        <!-- PDF Documents -->
+
+        <div class="pdf-grid" id="pdfGrid"></div>
+
+        <!-- Empty Results -->
+
+        <div class="empty" id="emptyMessage">
+            <h2>No documents found</h2>
+            <p>Try searching with a different keyword.</p>
+        </div>
+
+    </main>
+
+    <!-- PDF Viewer -->
+
+    <div class="viewer" id="pdfViewer"
+         role="dialog" aria-modal="true"
+         aria-labelledby="viewerTitle">
+
+        <div class="viewer-header">
+
+            <h3 id="viewerTitle">Document</h3>
+
+            <div class="viewer-actions">
+
+                <a id="externalLink"
+                   class="btn viewer-btn"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Open in new tab ↗
+                </a>
+
+                <a id="viewerDownload"
+                   class="btn viewer-btn">
+                    Download
+                </a>
+
+                <button class="btn close-btn"
+                        id="closeViewer">
+                    Close ✕
+                </button>
+
+            </div>
+
+        </div>
+
+        <iframe id="pdfFrame" title="PDF Document"></iframe>
+
+    </div>
+
+    <footer>
+        Document Library
+    </footer>
+
+    <script>
+
+        // Configure PDF.js
+
+        if (window.pdfjsLib) {
+            pdfjsLib.GlobalWorkerOptions.workerSrc =
+                "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+        }
+
+
+        const documents = [
+
+            {
+                title: "Introduction to Programming",
+                url: "pdfs/programming.pdf"
+            },
+
+            {
+                title: "Database Management Systems",
+                url: "pdfs/database.pdf"
+            },
+
+            {
+                title: "Computer Networks",
+                url: "pdfs/networks.pdf"
+            },
+
+            {
+                title: "Operating Systems",
+                url: "pdfs/operating-systems.pdf"
+            },
+
+            {
+                title: "Data Structures and Algorithms",
+                url: "pdfs/data-structures.pdf"
+            },
+
+            {
+                title: "Software Engineering",
+                url: "pdfs/software-engineering.pdf"
+            }
+
+        ];
+
+
+        const pdfGrid = document.getElementById("pdfGrid");
+        const searchInput = document.getElementById("searchInput");
+        const pdfViewer = document.getElementById("pdfViewer");
+        const pdfFrame = document.getElementById("pdfFrame");
+
+        let previousFocus = null;
+
+
+        async function generatePreview(doc, preview, details) {
+
+            const loader = document.createElement("div");
+            loader.className = "loader";
+            preview.appendChild(loader);
+
+            let pdf;
+
+            try {
+
+                if (!window.pdfjsLib) {
+                    throw new Error("PDF.js could not be loaded.");
+                }
+
+                pdf = await pdfjsLib.getDocument(doc.url).promise;
+
+                const page = await pdf.getPage(1);
+
+                const originalViewport = page.getViewport({
+                    scale: 1
+                });
+
+                const scale = Math.min(
+                    600 / originalViewport.width,
+                    750 / originalViewport.height
+                );
+
+                const viewport = page.getViewport({
+                    scale: scale
+                });
+
+                const canvas = document.createElement("canvas");
+
+                canvas.width = Math.ceil(viewport.width);
+                canvas.height = Math.ceil(viewport.height);
+
+                await page.render({
+                    canvasContext: canvas.getContext("2d"),
+                    viewport: viewport
+                }).promise;
+
+                loader.remove();
+
+                preview.appendChild(canvas);
+
+                details.textContent =
+                    pdf.numPages +
+                    (pdf.numPages === 1 ? " page" : " pages") +
+                    " · PDF Document";
+
+            } catch (error) {
+
+                loader.remove();
+
+                const message = document.createElement("span");
+
+                message.className = "preview-error";
+                message.textContent = "Preview unavailable";
+
+                preview.appendChild(message);
+
+                details.textContent = "PDF Document";
+
+                console.error(doc.title, error);
+
+            } finally {
+
+                if (pdf) {
+                    await pdf.destroy();
+                }
+
+            }
+
+        }
+
+
+        function createCard(doc) {
+
+            const card = document.createElement("article");
+            card.className = "pdf-card";
+
+            const preview = document.createElement("button");
+            preview.className = "preview";
+            preview.setAttribute("aria-label", "Open " + doc.title);
+            preview.onclick = () => openPDF(doc);
+
+            const badge = document.createElement("span");
+            badge.className = "file-badge";
+            badge.textContent = "PDF";
+
+            const overlay = document.createElement("span");
+            overlay.className = "preview-overlay";
+
+            const overlayText = document.createElement("span");
+            overlayText.textContent = "Open document";
+
+            overlay.appendChild(overlayText);
+            preview.append(badge, overlay);
+
+            const info = document.createElement("div");
+            info.className = "pdf-info";
+
+            const title = document.createElement("h3");
+            title.className = "pdf-title";
+            title.textContent = doc.title;
+
+            const details = document.createElement("p");
+            details.className = "pdf-details";
+            details.textContent = "Loading document...";
+
+            const actions = document.createElement("div");
+            actions.className = "actions";
+
+            const viewButton = document.createElement("button");
+            viewButton.className = "btn view-btn";
+            viewButton.textContent = "View PDF";
+            viewButton.onclick = () => openPDF(doc);
+
+            const downloadButton = document.createElement("a");
+            downloadButton.className = "btn download-btn";
+            downloadButton.textContent = "Download";
+            downloadButton.href = doc.url;
+            downloadButton.download = doc.title + ".pdf";
+
+            actions.append(viewButton, downloadButton);
+            info.append(title, details, actions);
+            card.append(preview, info);
+
+
+            if ("IntersectionObserver" in window) {
+
+                const observer = new IntersectionObserver(entries => {
+
+                    if (entries[0].isIntersecting) {
+
+                        generatePreview(doc, preview, details);
+                        observer.disconnect();
+
+                    }
+
+                }, {
+                    rootMargin: "150px"
+                });
+
+                observer.observe(card);
+
+            } else {
+
+                generatePreview(doc, preview, details);
+
+            }
+
+            return card;
+
+        }
+
+
+        function initializeDocuments() {
+
+            documents.forEach(doc => {
+
+                doc.card = createCard(doc);
+
+                pdfGrid.appendChild(doc.card);
+
+            });
+
+            searchDocuments();
+
+        }
+
+        function searchDocuments() {
+
+            const query = searchInput.value.toLowerCase().trim();
+
+            let count = 0;
+
+            documents.forEach(doc => {
+
+                const matches = doc.title.toLowerCase().includes(query);
+
+                doc.card.style.display = matches ? "" : "none";
+
+                if (matches) {
+                    count++;
+                }
+
+            });
+
+            document.getElementById("documentCount").textContent =
+                "Showing " + count + " of " +
+                documents.length + " documents";
+
+            document.getElementById("emptyMessage").style.display =
+                count === 0 ? "block" : "none";
+
+        }
+
+
+        function openPDF(doc) {
+
+            previousFocus = document.activeElement;
+
+            document.getElementById("viewerTitle").textContent =
+                doc.title;
+
+            document.getElementById("externalLink").href =
+                doc.url;
+
+            const download = document.getElementById("viewerDownload");
+
+            download.href = doc.url;
+            download.download = doc.title + ".pdf";
+
+            pdfFrame.src = doc.url;
+
+            pdfViewer.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+            document.getElementById("closeViewer").focus();
+
+        }
+
+
+        function closePDF() {
+
+            pdfViewer.classList.remove("active");
+
+            pdfFrame.src = "about:blank";
+
+            document.body.style.overflow = "";
+
+            if (previousFocus) {
+                previousFocus.focus();
+            }
+
+        }
+
+
+
+        searchInput.addEventListener("input", searchDocuments);
+
+        document.getElementById("closeViewer")
+            .addEventListener("click", closePDF);
+
+        document.addEventListener("keydown", event => {
+
+            if (
+                event.key === "Escape" &&
+                pdfViewer.classList.contains("active")
+            ) {
+                closePDF();
+            }
+
+        });
+
+
+        initializeDocuments();
+
+    </script>
+
+</body>
+</html>
